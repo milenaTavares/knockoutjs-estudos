@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Knockout</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<br><br>
+				<div class="panel panel-default">
+				<div class="panel-heading"><h4>Knockout Bindings</h4></div>
+				<div class="panel-body">
+					<!-- Linha superior -->
+					<div class="row">
+						<div class="col-xs-12" data-bind="with: alerta">
+                            <div class="alert" data-bind="text: mensagem, 
+                                                            css: {'alert-danger': tipo == 'danger', 'alert-info': tipo == 'info', 'alert-warning': tipo == 'warning'},
+                                                            visible: mostrar"></div>
+                        </div>
+					</div>
+					<div class="row">
+						<!-- COL ESQUERDA -->
+						<div class="col-xs-6">
+                            <strong>Lista de Itens</strong>
+                            <ul class="list-group" data-bind="foreach: listaItens">
+                                <li class="list-group-item" data-bind="css: {'item-checked': $data.check}">
+                                    <input type="checkbox"/>
+                                    <!-- ko text: descricao --><!-- /ko -->
+                                </li>
+                            </ul>
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-2 total">Total:</div>       
+                                    <div class="col-xs-2 total" data-bind="text: listaItens().length"></div>                                
+                                    <div class="col-xs-2 total text-center"><input type="checkbox" /> :</div>                                
+                                    <div class="col-xs-2 total">1</div>                                
+                                    <div class="col-xs-2 total text-center"><input type="checkbox" checked/> :</div>                                
+                                    <div class="col-xs-2 total">0</div>                                                         
+                                </div>
+                            </div>
+						</div>
+						<!-- COL DIREITA -->
+						<div class="col-xs-6">
+							<div class="row">
+								<div class="col-xs-12"><label>Descrição do Item</label></div>
+                                <div class="col-xs-12"><input type="text" class="form-control input-sm" data-bind="value: descricaoItem"/></div>
+								<div class="col-xs-12"><br></div>
+								<div class="col-xs-12"><button class="btn btn-primary btn-block" data-bind="click: incluirItem">Incluir Item</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    <script src="knockout-3.5.1.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

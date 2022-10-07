@@ -1,0 +1,7 @@
+.item-checked {
+    color: #ddd;
+    text-decoration: line-through;
+}
+.total{
+    padding:0 2px;
+}
